@@ -68,16 +68,25 @@ export const addStudentThunk = (student) => async (dispatch) => {  // The THUNK
 
 // Delete Student
 // THUNK CREATOR:
-export const deleteStudentThunk = studentId => async dispatch => {  // The THUNK
+export const deleteStudentThunk = studentId => async (dispatch, getState) => {
   try {
-    // API "delete" call to delete student (based on "studentID") from database
-    await axios.delete(`/api/students/${studentId}`);  
-    // Delete successful so change state with dispatch
+    await axios.delete(`/api/students/${studentId}`);
     dispatch(ac.deleteStudent(studentId));
-  } catch(err) {
+
+    // Update campus students in state
+    const campus = getState().campus;
+    if (campus && campus.students) {
+      const updatedCampus = {
+        ...campus,
+        students: campus.students.filter(s => s.id !== studentId)
+      };
+      dispatch(ac.fetchCampus(updatedCampus)); // re-dispatch campus to update
+    }
+  } catch (err) {
     console.error(err);
   }
 };
+
 
 // Edit Student
 // THUNK CREATOR:
