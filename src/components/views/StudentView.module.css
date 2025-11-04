@@ -57,6 +57,37 @@
 
 .studentCampus {
   font-size: 1rem;
+  font-weight: 500;
+}
+
+.campusLink {
+  text-decoration: none;
   color: #007bff;
   font-weight: 500;
+}
+
+.campusLink:hover {
+  text-decoration: underline;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.editButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.editButton:hover {
+  background-color: #218838;
 }
