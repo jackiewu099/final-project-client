@@ -57,7 +57,12 @@ export const addStudentThunk = (student) => async (dispatch) => {  // The THUNK
     dispatch(ac.addStudent(res.data));
     return res.data;
   } catch(err) {
-    console.error(err);
+    if (err.response && err.response.status === 400) {
+      return {errors: err.response.data.errors};
+    }
+    else {
+      return { errors: ["An unexpected error occurred."] };
+    }
   }
 };
 
