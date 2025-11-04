@@ -6,39 +6,35 @@ It constructs a React component to display all campuses.
 ================================================== */
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import styles from "./AllCampusesView.module.css"; // import CSS module
 
-const AllCampusesView = (props) => {
-  // If there is no campus, display a message.
-  if (!props.allCampuses.length) {
-    return <div>There are no campuses.</div>;
+const AllCampusesView = ({ allCampuses }) => {
+  if (!allCampuses.length) {
+    return <div className={styles.noCampuses}>There are no campuses.</div>;
   }
 
-  // If there is at least one campus, render All Campuses view 
   return (
-    <div>
-      <h1>All Campuses</h1>
+    <div className={styles.pageContainer}>
+      <h1 className={styles.pageTitle}>All Campuses</h1>
 
-      {props.allCampuses.map((campus) => (
-        <div key={campus.id}>
-          <Link to={`/campus/${campus.id}`}>
-            <h2>{campus.name}</h2>
+      <div className={styles.cardGrid}>
+        {allCampuses.map((campus) => (
+          <Link key={campus.id} to={`/campus/${campus.id}`} className={styles.cardLink}>
+            <div className={styles.card}>
+              <img
+                src={campus.imageURL || "https://via.placeholder.com/150"}
+                alt={campus.name}
+                className={styles.cardImage}
+              />
+              <h2 className={styles.cardTitle}>{campus.name}</h2>
+            </div>
           </Link>
-          <h4>campus id: {campus.id}</h4>
-          <p>{campus.address}</p>
-          <p>{campus.description}</p>
-          <hr/>
-        </div>
-      ))}
-      <br/>
-      <Link to={`/`}>
-        <button>Add New Campus</button>
-      </Link>
-      <br/><br/>
+        ))}
+      </div>
     </div>
   );
 };
 
-// Validate data type of the props passed to component.
 AllCampusesView.propTypes = {
   allCampuses: PropTypes.array.isRequired,
 };
