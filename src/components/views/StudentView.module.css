@@ -1,0 +1,93 @@
+/* StudentView.module.css */
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.studentImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #007bff;
+}
+
+.studentInfo {
+  text-align: center;
+}
+
+.studentName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.studentEmail {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.studentGpa {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.studentCampus {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.campusLink {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.campusLink:hover {
+  text-decoration: underline;
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.editButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.editButton:hover {
+  background-color: #218838;
+}
