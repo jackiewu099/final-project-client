@@ -20,6 +20,9 @@ class NewStudentContainer extends Component {
     this.state = {
       firstname: "", 
       lastname: "", 
+      email: "",
+      gpa: 0,
+      imageUrl: "",
       campusId: null, 
       redirect: false, 
       redirectId: null
@@ -29,7 +32,7 @@ class NewStudentContainer extends Component {
   // Capture input data when it is entered
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -38,13 +41,21 @@ class NewStudentContainer extends Component {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
     let student = {
-        firstname: this.state.firstname,
-        lastname: this.state.lastname,
-        campusId: this.state.campusId
+        firstName: this.state.firstname,
+        lastName: this.state.lastname,
+        email: this.state.email,
+        gpa: this.state.gpa,
+        imageUrl: this.state.imageUrl.trim() === "" ? undefined : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+        campusId: this.state.campusId,
     };
     
     // Add new student in back-end database
     let newStudent = await this.props.addStudent(student);
+
+    // Map backend errors (if any) to field-specific messages
+    if (newStudent && newStudent.errors) {
+      return;
+    }
 
     // Update state, and trigger redirect to show the new student
     this.setState({
@@ -52,7 +63,7 @@ class NewStudentContainer extends Component {
       lastname: "", 
       campusId: null, 
       redirect: true, 
-      redirectId: newStudent.id
+      redirectId: newStudent && newStudent.id ? newStudent.id : null
     });
   }
 
