@@ -1,5 +1,8 @@
 # client-starter-code
 
+Name: Jia Jun Wu
+Github username: jackiewu099
+
 This repository is the client (front-end) starter code for Final Project - Full-Stack CRUD Application.
 
 ----------
