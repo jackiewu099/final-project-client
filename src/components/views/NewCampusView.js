@@ -8,16 +8,16 @@ import {useState } from "react";
 import styles from "./NewCampusView.module.css";
 
 const NewCampusView = ({ handleChange, handleSubmit }) => {
-    const [errors, setErrors] = useState({ campusname: "", campusaddress: "" });
+    const [errors, setErrors] = useState({ campusName: "", campusAddress: "" });
 
     // Real-time validation for required fields
     const validate = (e) => {
         const {name, value} = e.target;
         let message = "";
 
-        if (name === "campusname" && !value.trim()) {
+        if (name === "campusName" && !value.trim()) {
             message = "Campus name is required.";
-        } else if (name === "campusaddress" && !value.trim()) {
+        } else if (name === "campusAddress" && !value.trim()) {
             message = "Campus address is required.";
         }
 
@@ -34,15 +34,15 @@ const NewCampusView = ({ handleChange, handleSubmit }) => {
             {/* Campus name */}
             <div className={styles.inputGroup}>
                 <label>Campus name</label>
-                <input type="text" name="campusname" onChange={validate} />
-                {errors.campusname && <span className={styles.error}>{errors.campusname}</span>}
+                <input type="text" name="campusName" onChange={validate} />
+                {errors.campusName && <span className={styles.error}>{errors.campusName}</span>}
             </div>
 
             {/* Campus address */}
             <div className={styles.inputGroup}>
                 <label>Campus address</label>
-                <input type="text" name="campusaddress" onChange={validate} />
-                {errors.campusaddress && <span className={styles.error}>{errors.campusaddress}</span>}
+                <input type="text" name="campusAddress" onChange={validate} />
+                {errors.campusAddress && <span className={styles.error}>{errors.campusAddress}</span>}
             </div>
 
             <div className= {styles.inputGroup}>
