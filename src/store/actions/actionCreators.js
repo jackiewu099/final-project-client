@@ -75,3 +75,11 @@ export const deleteCampus = (campusId) => {
     payload: campusId
   }
 }
+
+// Edit Campus
+export const editCampus = (campus) => {
+  return {
+    type: at.EDIT_CAMPUS,
+    payload: campus
+  }
+}
