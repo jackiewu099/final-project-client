@@ -20,6 +20,26 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {  // The THUNK
   }
 };
 
+// Add Campus
+// THUNK CREATOR:
+export const addCampusThunk = (campus) => async (dispatch) => {  // The THUNK
+  try {
+    // API "post" call to add "student" object's data to database
+    let res = await axios.post(`/api/campuses`, campus);  
+    // Call Action Creator to return Action object (type + payload with new campus data)
+    // Then dispatch the Action object to Reducer to update state 
+    dispatch(ac.addCampus(res.data));
+    return res.data;
+  } catch(err) {
+    if (err.response && err.response.status === 400) {
+      return {errors: err.response.data.errors};
+    }
+    else {
+      return { errors: ["An unexpected error occurred."] };
+    }
+  }
+};
+
 // Delete Campus
 // THUNK CREATOR:
 export const deleteCampusThunk = campusId => async dispatch => {
@@ -68,6 +88,7 @@ export const addStudentThunk = (student) => async (dispatch) => {  // The THUNK
     dispatch(ac.addStudent(res.data));
     return res.data;
   } catch(err) {
+    console.log(err);
     if (err.response && err.response.status === 400) {
       return {errors: err.response.data.errors};
     }

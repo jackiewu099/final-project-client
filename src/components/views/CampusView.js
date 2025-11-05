@@ -9,6 +9,7 @@ import styles from "./CampusView.module.css"; // Import CSS module
 
 const CampusView = ({ campus, deleteStudent }) => {
   if (!campus) return <div className={styles.noCampus}>Campus not found.</div>;
+  if (campus.description === null) campus.description = "No description available.";
 
   return (
     <div className={styles.pageContainer}>
