@@ -46,6 +46,7 @@ const EditStudentView = ({student, handleChange, handleSubmit}) => {
                         name="firstName"
                         value={student.firstName || ""}
                         onChange={validate}
+                        required
                     />
                     {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
                 </div>
@@ -58,6 +59,7 @@ const EditStudentView = ({student, handleChange, handleSubmit}) => {
                         name="lastName"
                         value={student.lastName || ""}
                         onChange={validate}
+                        required
                     />
                     {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
                 </div>
