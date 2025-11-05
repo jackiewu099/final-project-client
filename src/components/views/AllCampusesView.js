@@ -4,12 +4,26 @@ import styles from "./AllCampusesView.module.css";
 
 const AllCampusesView = ({ allCampuses, deleteCampus }) => {
   if (!allCampuses.length) {
-    return <div className={styles.noCampuses}>There are no campuses.</div>;
+    return (
+      <div className={styles.noCampuses}>
+        There are no campuses.
+        <div className={styles.addButtonContainer}>
+          <Link to="/newcampus" className={styles.addCampusButton}>
+            + Add New Campus
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className={styles.pageContainer}>
-      <h1 className={styles.pageTitle}>All Campuses</h1>
+      <div className={styles.headerRow}>
+        <h1 className={styles.pageTitle}>All Campuses</h1>
+        <Link to="/newcampus" className={styles.addCampusButton}>
+          + Add New Campus
+        </Link>
+      </div>
 
       <div className={styles.cardGrid}>
         {allCampuses.map((campus) => (
@@ -46,4 +60,5 @@ AllCampusesView.propTypes = {
 };
 
 export default AllCampusesView;
+
 
