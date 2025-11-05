@@ -125,12 +125,19 @@ export const deleteStudentThunk = studentId => async (dispatch, getState) => {
 export const editStudentThunk = student => async dispatch => {  // The THUNK
   try {
     // API "put" call to update student (based on "id" and "student" object's data) from database
-    let updatedStudent = await axios.put(`/api/students/${student.id}`, student); 
+    let res = await axios.put(`/api/students/${student.id}`, student); 
     // Update successful so change state with dispatch
-    dispatch(ac.editStudent(updatedStudent));
+    dispatch(ac.editStudent(res.data));
+    return res.data;
   } catch(err) {
-    console.error(err);
-  }
+    console.log(err);
+      if (err.response && err.response.status === 400) {
+        return {errors: err.response.data.errors};
+      }
+      else {
+        return { errors: ["An unexpected error occurred."] };
+      }
+  } 
 };
 
 // Single Student

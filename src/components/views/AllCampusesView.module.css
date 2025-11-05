@@ -6,9 +6,11 @@
 
 .pageTitle {
   text-align: center;
-  margin-bottom: 30px;
   font-size: 2rem;
   color: #11153e;
+  margin-top: 20px;
+  margin-bottom: 0;
+  margin-left: 10px;
 }
 
 .noCampuses {
@@ -78,3 +80,30 @@
 .deleteCampusButton:hover {
   background-color: #c82333;
 }
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.addCampusButton {
+  background-color: #11153e;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.addCampusButton:hover {
+  background-color: #2c317d;
+}
+
+.addButtonContainer {
+  margin-top: 20px;
+}
+
